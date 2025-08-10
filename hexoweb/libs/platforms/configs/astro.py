@@ -2,10 +2,10 @@
 config = {
     "name": "Astro",
     "posts": {
-        "path": ["src/content/blog"],
+        "path": ["src/content/posts"],
         "depth": [-1],
         "type": [".md"],
-        "save_path": "src/content/blog/${filename}.md",
+        "save_path": "src/content/posts/${filename}.md",
         "scaffold": ""
     },
     "drafts": {
@@ -16,7 +16,7 @@ config = {
         "scaffold": ""
     },
     "pages": {
-        "path": ["src/pages"],
+        "path": ["src/spec"],
         "depth": [1],
         "type": [".md", ".html", ".astro"],
         "save_path": "src/pages/${filename}",
