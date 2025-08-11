@@ -6,7 +6,7 @@ config = {
         "depth": [-1],
         "type": [".md"],
         "save_path": "src/content/posts/${filename}.md",
-        "scaffold": ""
+        "scaffold": "scaffolds/post.md"
     },
     "drafts": {
         "path": [],
