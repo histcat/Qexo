@@ -794,6 +794,11 @@ def get_post_details(article, safe=True):
             article = article[3:]
         passage = repr(article).replace("<", "\\<").replace(">", "\\>").replace("!", "\\!") if safe else article
     else:
+        for key in front_matter.keys():
+            if type(front_matter.get(key)) == datetime:
+                front_matter[key] = front_matter[key].astimezone().isoformat()
+            elif type(front_matter.get(key)) == date:
+                front_matter[key] = front_matter[key].isoformat()
         if safe:
             passage = repr(re.search(r"[;-][;-][;-]([\s\S]*)", article[3:], flags=0).group()[3:]).replace("<",
                                                                                                           "\\<").replace(
