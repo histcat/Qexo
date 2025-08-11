@@ -484,7 +484,7 @@ def save_post(request):
         content = unicodedata.normalize('NFC', request.POST.get('content'))
         front_matter = json.loads(unicodedata.normalize('NFC', request.POST.get('front_matter')))
         try:
-            _front_matter = "---\n{}---".format(yaml.dump(front_matter, allow_unicode=True, default_flow_style=False))
+            _front_matter = "---\n{}---".format(yaml.dump(front_matter, allow_unicode=True))
             if not content.startswith("\n"):
                 _front_matter += "\n"
             result = Provider().save_post(file_name, _front_matter + content, path=request.POST.get("path"), status=True)
@@ -539,7 +539,7 @@ def save_page(request):
         front_matter = json.loads(unicodedata.normalize('NFC', request.POST.get('front_matter')))
         commitchange = f"Update Page {file_path}"
         try:
-            front_matter = "---\n{}---".format(yaml.dump(front_matter, allow_unicode=True, default_flow_style=False))
+            front_matter = "---\n{}---".format(yaml.dump(front_matter, allow_unicode=True))
             if not content.startswith("\n"):
                 front_matter += "\n"
             if Provider().save(file_path, front_matter + content, commitchange):
@@ -604,7 +604,7 @@ def save_draft(request):
         front_matter = json.loads(unicodedata.normalize('NFC', request.POST.get('front_matter')))
         try:
             # 创建/更新草稿
-            _front_matter = "---\n{}---".format(yaml.dump(front_matter, allow_unicode=True, default_flow_style=False))
+            _front_matter = "---\n{}---".format(yaml.dump(front_matter, allow_unicode=True))
             if not content.startswith("\n"):
                 _front_matter += "\n"
             result = Provider().save_post(file_name, _front_matter + content, path=request.POST.get("path"), status=False, autobuild=False)
